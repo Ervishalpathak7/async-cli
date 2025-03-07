@@ -1,14 +1,26 @@
 import { existsSync, promises as fPromises } from 'fs';
-import { SpecificationFileNotFound } from '../errors/specification-file';
+let SpecificationFileNotFound: any;
+import('../errors/specification-file.js').then(module => {
+  SpecificationFileNotFound = module.SpecificationFileNotFound;
+});
 import { createServer } from 'http';
 import serveHandler from 'serve-handler';
 import { WebSocketServer } from 'ws';
 import chokidar from 'chokidar';
 import open from 'open';
 import path from 'path';
-import { version as studioVersion } from '@asyncapi/studio/package.json';
-import { blueBright,redBright } from 'picocolors';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
+const studioPackage = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../../package.json'), 'utf8'));
+
+const studioVersion = studioPackage.version;
+
+import picocolors from 'picocolors';
+
+const { blueBright, redBright } = picocolors;
 const { readFile, writeFile } = fPromises;
 
 const sockets: any[] = [];
@@ -147,3 +159,6 @@ function saveFileContent(filePath: string, fileContent: string): void {
   writeFile(filePath, fileContent, { encoding: 'utf8' })
     .catch(console.error);
 }
+
+
+

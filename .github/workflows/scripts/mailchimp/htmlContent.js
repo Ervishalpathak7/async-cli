@@ -2,7 +2,7 @@
  * This code is centrally managed in https://github.com/asyncapi/.github/
  * Don't make changes to this file in this repo as they will be overwritten with changes made to the same file in above mentioned repo
  */
-module.exports = (link, title) => {
+export default (link, title) => {
 
     return `<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

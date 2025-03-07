@@ -1,16 +1,17 @@
-import Command from '../../../core/base';
+import Command from '../../../core/base.js';
 import {
   loadContextFile,
   isContextFileEmpty,
   CONTEXT_FILE_PATH,
-} from '../../../core/models/Context';
+} from '../../../core/models/Context.js';
 import {
   MissingContextFileError,
   ContextFileWrongFormatError,
-} from '../../../core/errors/context-error';
-import { helpFlag } from '../../../core/flags/global.flags';
-import { blueBright } from 'picocolors';
+} from '../../../core/errors/context-error.js';
+import { helpFlag } from '../../../core/flags/global.flags.js';
+import picocolors from 'picocolors';
 
+const { blueBright } = picocolors;
 export default class ContextList extends Command {
   static description = 'List all the stored contexts in the store';
   static flags = helpFlag();

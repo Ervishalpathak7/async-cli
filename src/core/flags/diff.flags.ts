@@ -1,6 +1,6 @@
 import { Flags } from '@oclif/core';
-import { validationFlags } from '../parser';
-import { watchFlag } from './global.flags';
+import { validationFlags } from '../parser.js';
+import { watchFlag } from './global.flags.js';
 
 export const diffFlags = () => {
   return {

@@ -1,5 +1,5 @@
 import { Flags } from '@oclif/core';
-import { validationFlags } from '../../parser';
+import { validationFlags } from '../../parser.js';
 import { ModelinaFlags } from '@asyncapi/modelina-cli';
 
 export const modelsFlags = (): Record<string, any> => {

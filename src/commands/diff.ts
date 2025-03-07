@@ -1,23 +1,23 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { Args } from '@oclif/core';
-import * as diff from '@asyncapi/diff';
-import AsyncAPIDiff from '@asyncapi/diff/lib/asyncapidiff';
+import { diff as AsyncAPIDiff } from '@asyncapi/diff';
+import diff from '@asyncapi/diff';
 import { promises as fs } from 'fs';
 import chalk from 'chalk';
-import { load, Specification } from '../core/models/SpecificationFile';
-import Command from '../core/base';
-import { ValidationError } from '../core/errors/validation-error';
-import { SpecificationFileNotFound } from '../core/errors/specification-file';
+import { load, Specification } from '../core/models/SpecificationFile.js';
+import Command from '../core/base.js';
+import { ValidationError } from '../core/errors/validation-error.js';
+import { SpecificationFileNotFound } from '../core/errors/specification-file.js';
 import {
   DiffBreakingChangeError,
   DiffOverrideFileError,
   DiffOverrideJSONError,
-} from '../core/errors/diff-error';
-import { specWatcher } from '../core/globals';
-import { parse } from '../core/parser';
+} from '../core/errors/diff-error.js';
+import { specWatcher } from '../core/globals.js';
+import { parse } from '../core/parser.js';
 
-import type { SpecWatcherParams } from '../core/globals';
-import { diffFlags } from '../core/flags/diff.flags';
+import type { SpecWatcherParams } from '../core/globals.js';
+import { diffFlags } from '../core/flags/diff.flags.js';
 
 const { readFile } = fs;
 
@@ -148,7 +148,7 @@ export default class Diff extends Command {
     }
   }
 
-  outputJSON(diffOutput: AsyncAPIDiff, outputType: string) {
+  outputJSON(diffOutput: ReturnType<typeof AsyncAPIDiff>, outputType: string) {
     if (outputType === 'breaking') {
       this.log(JSON.stringify(diffOutput.breaking(), null, 2));
     } else if (outputType === 'non-breaking') {
@@ -162,11 +162,11 @@ export default class Diff extends Command {
     }
   }
 
-  outputYAML(diffOutput: AsyncAPIDiff, outputType: string) {
+  outputYAML(diffOutput: ReturnType<typeof AsyncAPIDiff>, outputType: string) {
     this.log(genericOutput(diffOutput, outputType) as string);
   }
 
-  outputMarkdown(diffOutput: AsyncAPIDiff, outputType: string) {
+  outputMarkdown(diffOutput: ReturnType<typeof AsyncAPIDiff>, outputType: string) {
     this.log(genericOutput(diffOutput, outputType) as string);
   }
 }
@@ -177,7 +177,7 @@ export default class Diff extends Command {
  * @param outputType The output format requested by the user
  * @returns The output(if the format exists) or a message indicating the format doesn't exist
  */
-function genericOutput(diffOutput: AsyncAPIDiff, outputType: string) {
+function genericOutput(diffOutput: ReturnType<typeof AsyncAPIDiff>, outputType: string) {
   switch (outputType) {
   case 'breaking': return diffOutput.breaking();
   case 'non-breaking': return diffOutput.nonBreaking();
@@ -231,7 +231,7 @@ const enableWatch = (status: boolean, watcher: SpecWatcherParams) => {
 /**
  * Throws `DiffBreakingChangeError` when breaking changes are detected
  */
-function throwOnBreakingChange(diffOutput: AsyncAPIDiff, outputFormat: string) {
+function throwOnBreakingChange(diffOutput: ReturnType<typeof AsyncAPIDiff>, outputFormat: string) {
   const breakingChanges = diffOutput.breaking();
   if (
     (outputFormat === 'json' && breakingChanges.length !== 0) ||

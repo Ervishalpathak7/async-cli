@@ -1,12 +1,19 @@
 import { promises as fPromises } from 'fs';
-import Command from '../../core/base';
+import Command from '../../core/base.js';
 import { resolve, join } from 'path';
-import { load } from '../../core/models/SpecificationFile';
+import { load } from '../../core/models/SpecificationFile.js';
 import fs from 'fs-extra';
-import { templateFlags } from '../../core/flags/new/template.flags';
-import { cyan, gray } from 'picocolors';
+import { templateFlags } from '../../core/flags/new/template.flags.js';
 import jsonfile from 'jsonfile';
 import path from 'path';
+import picocolors from 'picocolors';
+import { fileURLToPath } from 'url';
+
+const { cyan, gray } = picocolors;
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const successMessage = (projectName: string) =>
   `🎉 Your template is succesfully created

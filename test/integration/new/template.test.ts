@@ -1,7 +1,6 @@
 import { test } from '@oclif/test';
 import TestHelper from '../../helpers';
 import { expect } from '@oclif/test';
-import { cyan, gray } from 'picocolors';
 const testHelper = new TestHelper();
 const successMessage = (projectName: string) =>
   '🎉 Your template is succesfully created';

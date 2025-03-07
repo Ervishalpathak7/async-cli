@@ -1,4 +1,4 @@
-import Command from '../../core/base';
+import Command from '../../core/base.js';
 import { Help } from '@oclif/core';
 
 export default class Generate extends Command {

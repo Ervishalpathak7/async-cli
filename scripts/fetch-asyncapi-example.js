@@ -1,14 +1,17 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const fetch = require('node-fetch');
-const fs = require('fs');
-const unzipper = require('unzipper');
-const path = require('path');
+import fetch from 'node-fetch';
+import fs from 'fs';
+import unzipper from 'unzipper';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import { Parser } from '@asyncapi/parser';
+import { AvroSchemaParser } from '@asyncapi/avro-schema-parser';
+import { OpenAPISchemaParser } from '@asyncapi/openapi-schema-parser';
+import { RamlDTSchemaParser } from '@asyncapi/raml-dt-schema-parser';
 
-const { Parser } = require('@asyncapi/parser/cjs');
-const { AvroSchemaParser } = require('@asyncapi/avro-schema-parser');
-const { OpenAPISchemaParser } = require('@asyncapi/openapi-schema-parser');
-const { RamlDTSchemaParser } = require('@asyncapi/raml-dt-schema-parser');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const parser = new Parser({
   schemaParsers: [

@@ -3,10 +3,10 @@ import path from 'path';
 import { URL } from 'url';
 import fetch from 'node-fetch';
 import yaml from 'js-yaml';
-import { loadContext } from './Context';
-import { ErrorLoadingSpec } from '../errors/specification-file';
-import { MissingContextFileError } from '../errors/context-error';
-import { fileFormat } from 'core/flags/format.flags';
+import { loadContext } from './Context.js';
+import { ErrorLoadingSpec } from '../errors/specification-file.js';
+import { MissingContextFileError } from '../errors/context-error.js';
+import { fileFormat } from 'core/flags/format.flags.js';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 const { readFile, lstat } = fs;
 const allowedFileNames: string[] = [

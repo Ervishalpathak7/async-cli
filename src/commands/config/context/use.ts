@@ -1,14 +1,15 @@
 import { Args } from '@oclif/core';
-import Command from '../../../core/base';
-import { setCurrentContext, CONTEXT_FILE_PATH } from '../../../core/models/Context';
+import Command from '../../../core/base.js';
+import { setCurrentContext, CONTEXT_FILE_PATH } from '../../../core/models/Context.js';
 import {
   MissingContextFileError,
   ContextFileWrongFormatError,
   ContextFileEmptyError,
-} from '../../../core/errors/context-error';
-import { helpFlag } from '../../../core/flags/global.flags';
-import { blueBright } from 'picocolors';
+} from '../../../core/errors/context-error.js';
+import { helpFlag } from '../../../core/flags/global.flags.js';
+import picocolors from 'picocolors';
 
+const { blueBright } = picocolors;
 export default class ContextUse extends Command {
   static description = 'Set a context as current';
   static flags = helpFlag();

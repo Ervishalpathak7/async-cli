@@ -1,4 +1,7 @@
 declare module '@asyncapi/specs';
+interface ImportMeta {
+  url: string;
+}
 
 declare module '@asyncapi/openapi-schema-parser';
 declare module '@asyncapi/avro-schema-parser';

@@ -1,9 +1,9 @@
 import { Command } from '@oclif/core';
 import { MetadataFromDocument, MetricMetadata, NewRelicSink, Recorder, Sink, StdOutSink } from '@smoya/asyncapi-adoption-metrics';
 import { Parser } from '@asyncapi/parser';
-import { Specification } from './models/SpecificationFile';
+import { Specification } from './models/SpecificationFile.js';
 import { join, resolve } from 'path';
-import { existsSync } from 'fs-extra';
+import fsExtra from 'fs-extra';
 import { promises as fPromises } from 'fs';
 import { v4 as uuidv4 } from 'uuid';
 import { homedir } from 'os';
@@ -105,7 +105,7 @@ export default abstract class extends Command {
     let sink: Sink = new DiscardSink();
     const analyticsConfigFile = process.env.ASYNCAPI_METRICS_CONFIG_PATH || join(homedir(), '.asyncapi-analytics');
 
-    if (!existsSync(analyticsConfigFile)) {
+    if (!fsExtra.existsSync(analyticsConfigFile)) {
       await writeFile(analyticsConfigFile, JSON.stringify({ analyticsEnabled: 'true', infoMessageShown: 'false', userID: uuidv4()}), { encoding: 'utf8' });
     }
 

@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import { access, mkdir, rename } from 'fs/promises';
+import simpleGit from 'simple-git';
+import path from 'path';
 
-const { rename, access, mkdir } = require('fs').promises;
-const packageJson = require('../package.json');
-const path = require('path');
-const simpleGit = require('simple-git');
-const git = simpleGit({baseDir: process.cwd()});
+
+import packageJson from '../package.json' assert { type: 'json' };
+const git = simpleGit({ baseDir: process.cwd() });
 
 async function fileExists(checkPath) {
   try {

@@ -2,8 +2,8 @@
   "compilerOptions": {
     "outDir": "./lib",
     "baseUrl": "./src",
-    "target": "es6",
-    "module": "commonjs",
+    "target": "ESNext",
+    "module": "NodeNext",
     "lib": [
       "esnext",
     ],
@@ -16,9 +16,10 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    
   },
   "include": [
     "src"

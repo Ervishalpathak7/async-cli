@@ -1,14 +1,15 @@
 import { Args } from '@oclif/core';
-import Command from '../../../core/base';
-import { removeContext, CONTEXT_FILE_PATH } from '../../../core/models/Context';
+import Command from '../../../core/base.js';
+import { removeContext, CONTEXT_FILE_PATH } from '../../../core/models/Context.js';
 import {
   MissingContextFileError,
   ContextFileWrongFormatError,
   ContextFileEmptyError,
-} from '../../../core/errors/context-error';
-import { helpFlag } from '../../../core/flags/global.flags';
-import { blueBright } from 'picocolors';
+} from '../../../core/errors/context-error.js';
+import { helpFlag } from '../../../core/flags/global.flags.js';
+import picocolors from 'picocolors';
 
+const { blueBright } = picocolors;
 export default class ContextRemove extends Command {
   static description = 'Delete a context from the store';
   static flags = helpFlag();

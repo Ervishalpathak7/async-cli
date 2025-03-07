@@ -1,14 +1,14 @@
 import { Args } from '@oclif/core';
 import { Optimizer, Output, Report, ReportElement } from '@asyncapi/optimizer';
-import Command from '../core/base';
-import { ValidationError } from '../core/errors/validation-error';
-import { load } from '../core/models/SpecificationFile';
+import Command from '../core/base.js';
+import { ValidationError } from '../core/errors/validation-error.js';
+import { load } from '../core/models/SpecificationFile.js';
 import * as inquirer from 'inquirer';
 import chalk from 'chalk';
 import { promises } from 'fs';
 import { Parser } from '@asyncapi/parser';
-import { optimizeFlags } from '../core/flags/optimize.flags';
-import { proxyFlags } from '../core/flags/proxy.flags';
+import { optimizeFlags } from '../core/flags/optimize.flags.js';
+import { proxyFlags } from '../core/flags/proxy.flags.js';
 
 const { writeFile } = promises;
 

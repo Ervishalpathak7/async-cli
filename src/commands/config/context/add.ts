@@ -1,13 +1,14 @@
 import { Args } from '@oclif/core';
-import Command from '../../../core/base';
-import { addContext, setCurrentContext } from '../../../core/models/Context';
+import Command from '../../../core/base.js';
+import { addContext, setCurrentContext } from '../../../core/models/Context.js';
 import {
   MissingContextFileError,
   ContextFileWrongFormatError,
-} from '../../../core/errors/context-error';
-import { addFlags } from '../../../core/flags/config/context.flags';
-import { blueBright } from 'picocolors';
+} from '../../../core/errors/context-error.js';
+import { addFlags } from '../../../core/flags/config/context.flags.js';
+import picocolors from 'picocolors';
 
+const { blueBright } = picocolors;
 export default class ContextAdd extends Command {
   static description = 'Add a context to the store';
   static flags = addFlags();

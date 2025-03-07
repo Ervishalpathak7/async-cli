@@ -1,13 +1,15 @@
-import Command from '../../../core/base';
-import { getCurrentContext, CONTEXT_FILE_PATH } from '../../../core/models/Context';
+import Command from '../../../core/base.js';
+import { getCurrentContext, CONTEXT_FILE_PATH } from '../../../core/models/Context.js';
 import {
   MissingContextFileError,
   ContextFileWrongFormatError,
   ContextFileEmptyError,
   ContextNotFoundError,
-} from '../../../core/errors/context-error';
-import { helpFlag } from '../../../core/flags/global.flags';
-import { blueBright } from 'picocolors';
+} from '../../../core/errors/context-error.js';
+import { helpFlag } from '../../../core/flags/global.flags.js';
+import picocolors from 'picocolors';
+
+const { blueBright } = picocolors;
 
 export default class ContextCurrent extends Command {
   static description = 'Shows the current context that is being used';

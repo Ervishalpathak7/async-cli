@@ -5,6 +5,10 @@ import { test } from '@oclif/test';
 import { NO_CONTEXTS_SAVED } from '../../src/core/errors/context-error';
 import TestHelper, { createMockServer, stopMockServer } from '../helpers';
 import { expect } from '@oclif/test';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const testHelper = new TestHelper();
 

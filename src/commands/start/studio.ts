@@ -1,7 +1,7 @@
-import Command from '../../core/base';
-import { start as startStudio } from '../../core/models/Studio';
-import { load } from '../../core/models/SpecificationFile';
-import { studioFlags } from '../../core/flags/start/studio.flags';
+import Command from '../../core/base.js';
+import { start as startStudio } from '../../core/models/Studio.js';
+import { load } from '../../core/models/SpecificationFile.js';
+import { studioFlags } from '../../core/flags/start/studio.flags.js';
 import { Args } from '@oclif/core';
 
 export default class StartStudio extends Command {

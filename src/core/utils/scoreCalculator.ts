@@ -1,4 +1,4 @@
-import { AsyncAPIDocumentInterface } from '@asyncapi/parser/cjs/models';
+import type { AsyncAPIDocumentInterface } from '@asyncapi/parser/esm';
 
 export async function calculateScore(document: AsyncAPIDocumentInterface | undefined) {
   let scoreEvaluate = 0;

@@ -1,7 +1,7 @@
 import chokidar from 'chokidar';
 import chalk from 'chalk';
-import Command from './base';
-import { Specification } from './models/SpecificationFile';
+import Command from './base.js';
+import { Specification } from './models/SpecificationFile.js';
 
 const GreenLog = chalk.hex('#00FF00');
 const OrangeLog = chalk.hex('#FFA500');

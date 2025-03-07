@@ -1,10 +1,13 @@
 import path from 'path';
 import { expect, test } from '@oclif/test';
-
+import { fileURLToPath } from 'url';
 import TestHelper from '../helpers';
 import { CONTEXT_FILE_PATH } from '../../src/core/models/Context';
 
 const testHelper = new TestHelper();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 describe('config:context, positive scenario', () => {
   after(() => {

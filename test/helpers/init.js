@@ -1,8 +1,10 @@
-const path = require('path');
+import path from 'path';
+import { EventEmitter } from 'events';
 process.env.TS_NODE_PROJECT = path.resolve('test/tsconfig.json');
 process.env.NODE_ENV = 'development';
 
 global.oclif = global.oclif || {};
 global.oclif.columns = 80;
 
-require('events').EventEmitter.defaultMaxListeners = 30;
+
+EventEmitter.defaultMaxListeners = 30;

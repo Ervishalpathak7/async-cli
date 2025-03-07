@@ -4,6 +4,10 @@ import TestHelper, { createMockServer, stopMockServer } from '../helpers';
 import inquirer from 'inquirer';
 import {Optimizations, Outputs} from '../../src/commands/optimize';
 import { expect } from '@oclif/test';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const testHelper = new TestHelper();
 const optimizedFilePath = './test/fixtures/specification.yml';

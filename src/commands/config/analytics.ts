@@ -1,9 +1,11 @@
 import { join, resolve } from 'path';
-import Command from '../../core/base';
+import Command from '../../core/base.js';
 import { promises as fPromises } from 'fs';
 import { homedir } from 'os';
-import { analyticsFlags } from '../../core/flags/config/analytics.flags';
-import { blueBright, redBright } from 'picocolors';
+import { analyticsFlags } from '../../core/flags/config/analytics.flags.js';
+import picocolors from 'picocolors';
+
+const { blueBright, redBright } = picocolors;
 
 const { readFile, writeFile } = fPromises;
 

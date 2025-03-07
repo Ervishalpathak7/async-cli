@@ -1,5 +1,5 @@
 import { Flags } from '@oclif/core';
-import { watchFlag } from '../global.flags';
+import { watchFlag } from '../global.flags.js';
 
 export const fromTemplateFlags = () => {
   return {

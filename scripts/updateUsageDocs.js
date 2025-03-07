@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const {writeFile, readFile} = require('fs').promises;
+import { readFile, writeFile } from 'fs/promises';
 
 // Define the paths to the README and usage files
 const README_PATH = './scripts/README.md'; // File path for the generated README file

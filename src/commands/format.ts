@@ -1,17 +1,19 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { promises as fPromises } from 'fs';
 import { Args } from '@oclif/core';
-import Command from '../core/base';
+import Command from '../core/base.js';
 
 import {
   convertToJSON,
   convertToYaml,
   load,
   retrieveFileFormat,
-} from '../core/models/SpecificationFile';
-import { SpecificationWrongFileFormat } from '../core/errors/specification-file';
-import { cyan, green } from 'picocolors';
-import { convertFormatFlags, fileFormat } from '../core/flags/format.flags';
+} from '../core/models/SpecificationFile.js';
+import { SpecificationWrongFileFormat } from '../core/errors/specification-file.js';
+import { convertFormatFlags, fileFormat } from '../core/flags/format.flags.js';
+import picocolors from 'picocolors';
+
+const { green, cyan } = picocolors;
 
 export default class Convert extends Command {
   static specFile: any;

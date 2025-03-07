@@ -1,6 +1,8 @@
-import Command from '../../core/base';
-import { helpFlag } from '../../core/flags/global.flags';
-import { blueBright, gray } from 'picocolors';
+import Command from '../../core/base.js';
+import { helpFlag } from '../../core/flags/global.flags.js';
+import picocolors from 'picocolors';
+
+const { gray, blueBright } = picocolors;
 
 export default class Versions extends Command {
   static description = 'Show versions of AsyncAPI tools used';

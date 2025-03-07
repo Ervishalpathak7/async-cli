@@ -1,19 +1,20 @@
 import { AvroSchemaParser } from '@asyncapi/avro-schema-parser';
 import { OpenAPISchemaParser } from '@asyncapi/openapi-schema-parser';
-import { DiagnosticSeverity, Parser, convertToOldAPI } from '@asyncapi/parser/cjs';
+import { DiagnosticSeverity, Parser, convertToOldAPI } from '@asyncapi/parser';
 import { RamlDTSchemaParser } from '@asyncapi/raml-dt-schema-parser';
 import { Flags } from '@oclif/core';
 import { ProtoBuffSchemaParser } from '@asyncapi/protobuf-schema-parser';
-import { getDiagnosticSeverity } from '@stoplight/spectral-core';
-import { OutputFormat } from '@stoplight/spectral-cli/dist/services/config';
+import { OutputFormat } from '@stoplight/spectral-cli/dist/services/config.js';
 import { html, json, junit, pretty, stylish, teamcity, text } from '@stoplight/spectral-formatters';
-import { red, yellow, green, cyan } from 'chalk';
-
+import chalk from 'chalk';
 import type { Diagnostic } from '@asyncapi/parser/cjs';
-import type Command from './base';
-import type { Specification } from './models/SpecificationFile';
+import type Command from './base.js';
+import type { Specification } from './models/SpecificationFile.js';
 import { promises } from 'fs';
 import path from 'path';
+import spectralCore from '@stoplight/spectral-core';
+
+
 
 type DiagnosticsFormat = 'stylish' | 'json' | 'junit' | 'html' | 'text' | 'teamcity' | 'pretty';
 
@@ -22,6 +23,10 @@ export type SeverityKind = 'error' | 'warn' | 'info' | 'hint';
 export { convertToOldAPI };
 
 const { writeFile } = promises;
+
+const { getDiagnosticSeverity } = spectralCore;
+
+const { red, yellow, cyan, green } = chalk;
 
 const formatExtensions: Record<DiagnosticsFormat, string> = {
   stylish: '.txt',
@@ -107,7 +112,8 @@ function logDiagnostics(
 ): 'valid' | 'invalid' {
   const logDiagnostics = options['log-diagnostics'];
   const failSeverity = options['fail-severity'] ?? 'error';
-  const diagnosticsFormat = options['diagnostics-format'] ?? 'stylish';
+  const diagnosticsFormat = validFormats.includes(options['diagnostics-format'] || '')
+  ? options['diagnostics-format'] as DiagnosticsFormat : 'stylish';
   const sourceString = specFile.toSourceString();
 
   const hasIssues = diagnostics.length > 0;

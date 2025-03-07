@@ -1,5 +1,5 @@
 import { loadHelpClass } from '@oclif/core';
-import Command from '../../../core/base';
+import Command from '../../../core/base.js';
 
 export default class Context extends Command {
   static description =

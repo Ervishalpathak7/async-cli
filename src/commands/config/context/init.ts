@@ -1,8 +1,9 @@
 import { Args } from '@oclif/core';
-import Command from '../../../core/base';
-import { initContext } from '../../../core/models/Context';
-import { helpFlag } from '../../../core/flags/global.flags';
-import { blueBright } from 'picocolors';
+import Command from '../../../core/base.js';
+import { initContext } from '../../../core/models/Context.js';
+import { helpFlag } from '../../../core/flags/global.flags.js';
+import picocolors from 'picocolors';
+const { blueBright } = picocolors;
 export default class ContextInit extends Command {
   static description = 'Initialize context';
   static flags = helpFlag();

@@ -1,17 +1,19 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { promises as fPromises } from 'fs';
 import { Args } from '@oclif/core';
-import Command from '../core/base';
-import { ValidationError } from '../core/errors/validation-error';
-import { load } from '../core/models/SpecificationFile';
-import { SpecificationFileNotFound } from '../core/errors/specification-file';
+import Command from '../core/base.js';
+import { ValidationError } from '../core/errors/validation-error.js';
+import { load } from '../core/models/SpecificationFile.js';
+import { SpecificationFileNotFound } from '../core/errors/specification-file.js';
 import { convert, convertOpenAPI, convertPostman } from '@asyncapi/converter';
 import type { AsyncAPIConvertVersion, OpenAPIConvertVersion } from '@asyncapi/converter';
-import { cyan, green } from 'picocolors';
-import { proxyFlags } from '../core/flags/proxy.flags';
+import { proxyFlags } from '../core/flags/proxy.flags.js';
+import picocolors from 'picocolors';
 // @ts-ignore
 import specs from '@asyncapi/specs';
-import { convertFlags } from '../core/flags/convert.flags';
+import { convertFlags } from '../core/flags/convert.flags.js';
+
+const { green, cyan } = picocolors;
 
 const latestVersion = Object.keys(specs.schemas).pop() as string;
 

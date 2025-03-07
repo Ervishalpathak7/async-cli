@@ -1,9 +1,13 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function bumpActionVersion() {
   const packageJsonPath = path.join(__dirname, '../../', 'package.json');
-  const packageJsonVersion = require(packageJsonPath).version;
+  const packageJsonVersion = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8')).version;
 
   const templatePath = path.join(__dirname, '../../', 'action-template.yml');
   const outputPath = path.join(__dirname, '../../', 'action.yml');

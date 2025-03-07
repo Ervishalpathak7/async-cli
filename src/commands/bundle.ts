@@ -1,10 +1,11 @@
-import Command from '../core/base';
-import bundle from '@asyncapi/bundler';
+import Command from '../core/base.js';
 import { promises } from 'fs';
 import path from 'path';
-import { Specification } from '../core/models/SpecificationFile';
-import { Document } from '@asyncapi/bundler/lib/document';
-import { bundleFlags } from '../core/flags/bundle.flags';
+import { Specification } from '../core/models/SpecificationFile.js';
+import { Document } from '@asyncapi/bundler/lib/document.js';
+import { bundleFlags } from '../core/flags/bundle.flags.js';
+import bundle from '@asyncapi/bundler';
+
 
 const { writeFile } = promises;
 
@@ -31,7 +32,7 @@ export default class Bundle extends Command {
 
     this.metricsMetadata.files = AsyncAPIFiles.length;
 
-    const document = await bundle(AsyncAPIFiles,
+    const document = await bundle.default(AsyncAPIFiles,
       {
         base: flags.base,
         baseDir: flags.baseDir,

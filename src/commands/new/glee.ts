@@ -1,15 +1,20 @@
 import { promises as fPromises } from 'fs';
-import Command from '../../core/base';
+import Command from '../../core/base.js';
 import path, { resolve, join } from 'path';
 import fs from 'fs-extra';
-import { Specification, load } from '../../core/models/SpecificationFile';
+import { Specification, load } from '../../core/models/SpecificationFile.js';
 import yaml from 'js-yaml';
-import { prompt } from 'inquirer';
+import inquirer from 'inquirer';
+
 // eslint-disable-next-line
 // @ts-ignore
 import Generator from '@asyncapi/generator';
-import { cyan, gray } from 'picocolors';
-import { gleeFlags } from '../../core/flags/new/glee.flags';
+import picocolors from 'picocolors';
+import { gleeFlags } from '../../core/flags/new/glee.flags.js';
+import { fileURLToPath } from 'url';
+
+const { cyan, gray } = picocolors;
+const { prompt } = inquirer;
 
 export const successMessage = (projectName: string) =>
   `🎉 Your Glee project has been successfully created!
@@ -29,6 +34,11 @@ To specify a different name for the new project, please run the command below wi
 
     ${gray('asyncapi new glee --name ') + gray(projectName) + gray('-1')}`,
 };
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 export default class NewGlee extends Command {
   static description = 'Creates a new Glee project';

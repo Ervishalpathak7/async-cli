@@ -1,11 +1,18 @@
 import { promises as fPromises, readFileSync } from 'fs';
-import Command from '../../core/base';
+import Command from '../../core/base.js';
 import * as inquirer from 'inquirer';
-import { start as startStudio, DEFAULT_PORT } from '../../core/models/Studio';
+import { start as startStudio, DEFAULT_PORT } from '../../core/models/Studio.js';
 import { resolve } from 'path';
-import { load } from '../../core/models/SpecificationFile';
-import { cyan } from 'picocolors';
-import { fileFlags } from '../../core/flags/new/file.flags';
+import { load } from '../../core/models/SpecificationFile.js';
+import { fileFlags } from '../../core/flags/new/file.flags.js';
+import picocolors from 'picocolors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const { cyan } = picocolors;
 
 const { writeFile, readFile } = fPromises;
 const DEFAULT_ASYNCAPI_FILE_NAME = 'asyncapi.yaml';

@@ -4,6 +4,10 @@ import { IContextFile, CONTEXT_FILE_PATH } from '../../src/core/models/Context';
 import SpecificationFile from '../../src/core/models/SpecificationFile';
 import http from 'http';
 import rimraf from 'rimraf';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const ASYNCAPI_FILE_PATH = path.resolve(process.cwd(), 'specification.yaml');
 const SERVER_DIRECTORY= path.join(__dirname, '../fixtures/dummyspec');

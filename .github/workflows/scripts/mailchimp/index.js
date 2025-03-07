@@ -66,7 +66,7 @@ module.exports = async (link, title) => {
         //so if this code was created by new issue creation at 9:46, the email is scheduled for 10:00
         //is it like this as schedule has limitiations and you cannot schedule email for 9:48
         const scheduleDate = new Date(Date.parse(new Date(Date.now()).toISOString()) + 1 * 1 * 60 * 60 * 1000);
-        scheduleDate.setUTCMinutes(00);
+        scheduleDate.setUTCMinutes(0);
 
         await mailchimp.campaigns.schedule(newCampaign.id, {
             schedule_time: scheduleDate.toISOString(),

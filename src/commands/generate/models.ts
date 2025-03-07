@@ -1,11 +1,13 @@
-import Command from '../../core/base';
-import { load } from '../../core/models/SpecificationFile';
-import { formatOutput, parse, ValidateOptions } from '../../core/parser';
-import { cancel, intro, isCancel, select, spinner, text } from '@clack/prompts';
-import { green, inverse } from 'picocolors';
+import Command from '../../core/base.js';
+import { load } from '../../core/models/SpecificationFile.js';
+import { formatOutput, parse, ValidateOptions } from '../../core/parser.js';
+import picocolors from 'picocolors';
 import { generateModels, Languages, ModelinaArgs } from '@asyncapi/modelina-cli';
-import { modelsFlags } from '../../core/flags/generate/models.flags';
-import { proxyFlags } from '../../core/flags/proxy.flags';
+import { modelsFlags } from '../../core/flags/generate/models.flags.js';
+import { proxyFlags } from '../../core/flags/proxy.flags.js';
+import { cancel, intro, isCancel, select, spinner, text } from '@clack/prompts';
+
+const { green, inverse } = picocolors;
 
 export default class Models extends Command {
   static description = 'Generates typed models';

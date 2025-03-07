@@ -1,4 +1,4 @@
-import { NO_CONTEXTS_SAVED } from './context-error';
+import { NO_CONTEXTS_SAVED } from './context-error.js';
 class SpecificationFileError extends Error {
   constructor() {
     super();

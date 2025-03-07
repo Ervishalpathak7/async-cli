@@ -1,5 +1,5 @@
 import { Args } from '@oclif/core';
-import Command from '../../core/base';
+import Command from '../../core/base.js';
 // eslint-disable-next-line
 // @ts-ignore
 import AsyncAPIGenerator from '@asyncapi/generator';
@@ -7,16 +7,18 @@ import AsyncAPINewGenerator from 'generator-v2';
 import path from 'path';
 import os from 'os';
 import fs from 'fs';
-import { load, Specification } from '../../core/models/SpecificationFile';
-import { isLocalTemplate, Watcher } from '../../core/utils/generator';
-import { ValidationError } from '../../core/errors/validation-error';
-import { GeneratorError } from '../../core/errors/generator-error';
+import picocolors from 'picocolors';
+import { load, Specification } from '../../core/models/SpecificationFile.js';
+import { isLocalTemplate, Watcher } from '../../core/utils/generator.js';
+import { ValidationError } from '../../core/errors/validation-error.js';
+import { GeneratorError } from '../../core/errors/generator-error.js';
 import { Parser } from '@asyncapi/parser';
-import { intro, isCancel, spinner, text } from '@clack/prompts';
-import { inverse, yellow, magenta, green, red } from 'picocolors';
 import fetch from 'node-fetch';
-import { fromTemplateFlags } from '../../core/flags/generate/fromTemplate.flags';
-import { proxyFlags } from '../../core/flags/proxy.flags';
+import { fromTemplateFlags } from '../../core/flags/generate/fromTemplate.flags.js';
+import { proxyFlags } from '../../core/flags/proxy.flags.js';
+import { intro, isCancel, spinner, text } from '@clack/prompts';
+
+const { yellow, magenta, red, green, inverse } = picocolors;
 
 interface IMapBaseUrlToFlag {
   url: string,
